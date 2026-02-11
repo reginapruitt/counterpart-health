@@ -4,192 +4,206 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers | Counterpart Health</title>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* CPH BRAND IDENTITY SYSTEM [cite: 42-49] */
         :root {
-            --cph-teal: #3CBBC8;      /* Primary Highlight [cite: 44] */
-            --cph-blue: #444AD3;      /* Secondary Accent [cite: 48] */
-            --cph-dark: #2B2933;      /* Deep Charcoal for Text [cite: 46] */
-            --cph-gray: #7D7D7D;      /* Metadata Text [cite: 57] */
-            --cph-light-gray: #E9E9E9;/* Borders/Backgrounds [cite: 45] */
-            --cph-teal-light: #B1FAFF;/* Alert support color [cite: 47] */
+            --cph-teal: #3CBBC8;      /* Primary Brand Color */
+            --cph-blue: #444AD3;      /* Secondary Accent */
+            --cph-charcoal: #2B2933;  /* Headlines */
+            --cph-gray: #7D7D7D;      /* Subtext */
+            --cph-bg: #F8FAFB;        /* Soft Background */
             --white: #FFFFFF;
-            --font-main: 'Calibri', 'Candara', 'Segoe UI', sans-serif; /* Per guidelines  */
-            --font-logo: 'Abril Fatface', serif; /* Reserved for logo  */
+            --font-logo: 'Abril Fatface', serif;
+            --font-ui: 'Inter', 'Calibri', sans-serif; /* Professional & Modern */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: var(--font-main);
-            background-color: var(--white);
-            color: var(--cph-dark);
+            font-family: var(--font-ui);
+            background-color: var(--cph-bg);
+            color: var(--cph-charcoal);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* NAVIGATION & BRANDED LOGO */
+        /* SUBTLE BRAND PATTERN (Makes the page "interesting") */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(var(--cph-teal) 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        /* NAVIGATION */
         nav {
-            padding: 25px 8%;
+            background: var(--white);
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--cph-light-gray);
-            background: var(--white);
+            border-bottom: 1px solid #EDEDED;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .logo-group {
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             text-decoration: none;
         }
 
-        /* CSS Version of Logomark-Digital-L.svg */
-        .c-logomark {
-            width: 40px;
-            height: 40px;
+        /* RECONSTRUCTED CPH LOGO */
+        .cph-c-mark {
+            width: 42px;
+            height: 42px;
             background: var(--cph-teal);
-            color: var(--white);
             border-radius: 8px;
             display: grid;
             place-items: center;
             font-family: var(--font-logo);
-            font-size: 28px;
-            font-weight: normal;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(60, 187, 200, 0.3);
         }
 
         .logo-text {
             font-family: var(--font-logo);
-            font-size: 26px;
-            color: var(--cph-dark);
+            font-size: 28px;
+            color: var(--cph-charcoal);
+            letter-spacing: -0.5px;
         }
 
         .logo-text span { color: var(--cph-teal); }
 
-        /* HERO - CLINICIAN FOCUS [cite: 418, 419] */
-        .hero-banner {
-            height: 450px;
-            background: linear-gradient(90deg, rgba(43,41,51,0.85) 0%, rgba(43,41,51,0.4) 100%), 
-                        url('https://images.unsplash.com/photo-1559839734-2b71f1e3c7e5?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
+        /* HERO SECTION */
+        .hero {
+            padding: 100px 8% 140px;
+            background: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             align-items: center;
-            padding: 0 8%;
-            color: var(--white);
+            gap: 60px;
         }
 
         .hero-content h1 {
-            font-size: 52px; /* Header - 48 Bold adjusted for web [cite: 28] */
-            max-width: 600px;
-            margin-bottom: 20px;
+            font-family: var(--font-logo);
+            font-size: 64px;
+            line-height: 1.1;
+            margin-bottom: 25px;
         }
 
-        /* JOB BOARD CARDS [cite: 20, 22] */
-        .board-container {
-            max-width: 1200px;
-            margin: -50px auto 100px;
-            padding: 0 20px;
+        .hero-content p {
+            font-size: 22px;
+            color: var(--cph-gray);
+            max-width: 500px;
         }
 
-        .section-white {
+        .hero-image {
+            position: relative;
+            height: 450px;
+            background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            box-shadow: 20px 20px 0px var(--cph-teal-light, #E0F7F9);
+        }
+
+        /* JOB BOARD LISTING */
+        .main-content {
+            max-width: 1000px;
+            margin: -80px auto 100px;
+            position: relative;
+        }
+
+        .board-card {
             background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
             padding: 60px;
         }
 
-        .job-card {
+        .job-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 30px;
-            border-radius: 8px;
-            border: 1px solid var(--cph-light-gray);
-            margin-bottom: 20px;
+            border: 1px solid #F0F0F0;
+            border-radius: 12px;
+            margin-bottom: 16px;
             transition: all 0.3s ease;
             cursor: pointer;
+            text-decoration: none;
+            color: inherit;
         }
 
-        .job-card:hover {
+        .job-item:hover {
             border-color: var(--cph-teal);
-            background: #F4FDFF;
-            transform: translateY(-3px);
+            transform: scale(1.02);
+            background: #FAFDFF;
         }
 
-        .job-card h3 {
-            font-size: 24px; /* Title Large [cite: 29] */
+        .job-item h3 {
+            font-family: var(--font-logo);
+            font-size: 24px;
             color: var(--cph-blue);
-            margin-bottom: 6px;
-        }
-
-        .job-card .tag {
-            font-size: 14px;
-            color: var(--cph-gray);
-            font-weight: 400;
+            margin-bottom: 5px;
         }
 
         .btn-teal {
             background: var(--cph-teal);
-            color: var(--white);
-            padding: 14px 28px;
+            color: white;
+            padding: 12px 24px;
             border-radius: 6px;
             font-weight: 700;
-            text-decoration: none;
-            display: inline-block;
-            transition: background 0.2s;
+            text-transform: uppercase;
+            font-size: 13px;
         }
 
-        /* APPLICATION ASSISTANT UI  */
-        #appView { display: none; }
+        /* DYNAMIC APPLICATION VIEW */
+        #app-view { display: none; }
 
-        .assistant-box {
-            background: var(--cph-teal-light);
-            border-left: 5px solid var(--cph-teal);
+        .assistant-prompt {
+            background: #F0FBFC;
+            border-left: 4px solid var(--cph-teal);
             padding: 20px;
+            border-radius: 8px;
             margin-bottom: 40px;
-            border-radius: 4px;
-            display: flex;
-            gap: 15px;
-            align-items: flex-start;
+            font-size: 15px;
         }
-
-        .assistant-box strong { color: var(--cph-blue); }
 
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 25px;
         }
 
         .full { grid-column: span 2; }
 
-        label {
-            display: block;
-            font-weight: 700; /* Bold per guidelines [cite: 35] */
-            margin-bottom: 10px;
-            font-size: 16px; /* Body 1 [cite: 33] */
+        label { display: block; font-weight: 700; margin-bottom: 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        input, select, textarea {
+            width: 100%; padding: 16px; border: 2px solid #F0F0F0; border-radius: 8px; font-family: inherit; font-size: 16px;
         }
 
-        input, select, textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid var(--cph-light-gray);
-            border-radius: 6px;
-            font-family: inherit;
-        }
+        input:focus { outline: none; border-color: var(--cph-teal); background: white; }
 
         .submit-trigger {
             background: var(--cph-blue);
             color: white;
+            width: 100%;
             padding: 20px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
-            width: 100%;
+            margin-top: 20px;
         }
 
     </style>
@@ -197,54 +211,50 @@
 <body>
 
 <nav>
-    <a href="#" class="logo-group">
-        <div class="c-logomark">C</div>
-        <div class="logo-text">Counterpart <span>Health</span></div>
+    <a href="#" class="logo-container">
+        <div class="cph-c-mark">C</div>
+        <div class="logo-text">Counterpart<span>Health</span></div>
     </a>
-    <div style="font-weight: 700; color: var(--cph-blue); letter-spacing: 1px;">CAREERS</div>
+    <div style="font-weight: 700; color: var(--cph-blue); border: 2px solid var(--cph-blue); padding: 8px 16px; border-radius: 6px; font-size: 12px;">CAREERS</div>
 </nav>
 
-<div class="hero-banner" id="heroSection">
+<div class="hero" id="hero-area">
     <div class="hero-content">
-        <h1>Building the future of clinical technology.</h1>
-        <p style="font-size: 22px; opacity: 0.9;">Join us in enabling physicians through world-class AI.</p>
+        <h1>Small moments. Big outcomes.</h1>
+        <p>Join the team building AI-powered physician enablement to fix healthcare from the point of care.</p>
     </div>
+    <div class="hero-image"></div>
 </div>
 
-<div class="board-container">
-    <div class="section-white">
+<div class="main-content">
+    <div class="board-card">
         
-        <div id="boardView">
-            <h2 style="font-size: 32px; margin-bottom: 40px;">Open Positions</h2>
+        <div id="board-view">
+            <h2 style="font-family: var(--font-logo); font-size: 32px; margin-bottom: 40px;">Current Openings</h2>
             
-            <div class="job-card" onclick="toggleApp('Senior Manager, Data Science')">
+            <div class="job-item" onclick="showForm('Senior Manager, Data Science')">
                 <div>
                     <h3>Senior Manager, Data Science</h3>
-                    <div class="tag">Engineering • Remote - USA • Full-time</div>
+                    <p style="color: var(--cph-gray);">Engineering • Remote, USA • Full-time</p>
                 </div>
                 <div class="btn-teal">Apply Now</div>
             </div>
 
-            <div class="job-card" onclick="toggleApp('Clinical Operations Lead')">
+            <div class="job-item" onclick="showForm('Clinical Operations Lead')">
                 <div>
                     <h3>Clinical Operations Lead</h3>
-                    <div class="tag">Operations • New York, NY • Full-time</div>
+                    <p style="color: var(--cph-gray);">Operations • New York, NY • Full-time</p>
                 </div>
                 <div class="btn-teal">Apply Now</div>
             </div>
         </div>
 
-        <div id="appView">
-            <a href="javascript:void(0)" onclick="closeApp()" style="color: var(--cph-blue); text-decoration: none; font-weight: 700;">← BACK TO LIST</a>
-            <h2 id="jobTitle" style="font-size: 36px; margin: 20px 0 10px 0;">Application</h2>
-            <p style="color: var(--cph-gray); margin-bottom: 30px;">Value-based care, at the point of care.</p>
-
-            <div class="assistant-box">
-                <div style="font-size: 24px;">💡</div>
-                <div>
-                    <strong>Counterpart Assistant:</strong> 
-                    Since you're applying for an Operations role, our recruiters are specifically looking for candidates with experience in 12-column grid content design[cite: 22].
-                </div>
+        <div id="app-view">
+            <a href="javascript:void(0)" onclick="hideForm()" style="color: var(--cph-blue); text-decoration: none; font-weight: 700; display: block; margin-bottom: 30px;">← BACK TO ALL ROLES</a>
+            <h2 id="dynamic-title" style="font-family: var(--font-logo); font-size: 42px; margin-bottom: 10px;">Apply</h2>
+            
+            <div class="assistant-prompt">
+                <strong>Counterpart Assistant:</strong> We've noted your interest in this role. Our team prioritizes candidates who show a deep understanding of value-based care.
             </div>
 
             <form class="form-grid">
@@ -262,7 +272,7 @@
                 </div>
                 <div class="field full">
                     <label>Resume / CV</label>
-                    <input type="file" style="padding: 40px; border: 2px dashed var(--cph-light-gray); text-align: center;">
+                    <input type="file" style="padding: 30px; border: 2px dashed #DDD; text-align: center;">
                 </div>
                 <div class="field full">
                     <button type="submit" class="submit-trigger">Submit to Counterpart Health</button>
@@ -273,24 +283,24 @@
     </div>
 </div>
 
-<footer style="text-align: center; color: var(--cph-gray); font-size: 14px; padding-bottom: 50px;">
-    © 2026 Counterpart Health, Inc. All rights reserved. [cite: 2]
+<footer style="text-align: center; padding-bottom: 60px; color: var(--cph-gray); font-size: 14px;">
+    © 2026 Counterpart Health. Value-based care, at the point of care.
 </footer>
 
 <script>
-    function toggleApp(title) {
-        document.getElementById('boardView').style.display = 'none';
-        document.getElementById('heroSection').style.height = '250px';
-        document.getElementById('appView').style.display = 'block';
-        document.getElementById('jobTitle').innerText = title;
-        window.scrollTo(0,0);
+    function showForm(title) {
+        document.getElementById('board-view').style.display = 'none';
+        document.getElementById('hero-area').style.display = 'none';
+        document.getElementById('app-view').style.display = 'block';
+        document.getElementById('dynamic-title').innerText = title;
+        window.scrollTo(0, 0);
     }
 
-    function closeApp() {
-        document.getElementById('boardView').style.display = 'block';
-        document.getElementById('heroSection').style.height = '450px';
-        document.getElementById('appView').style.display = 'none';
-        window.scrollTo(0,0);
+    function hideForm() {
+        document.getElementById('board-view').style.display = 'block';
+        document.getElementById('hero-area').style.display = 'grid';
+        document.getElementById('app-view').style.display = 'none';
+        window.scrollTo(0, 0);
     }
 </script>
 
