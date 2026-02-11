@@ -3,211 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers | Counterpart Health</title>
+    <title>Join the Mission | Counterpart Health Careers</title>
     <style>
-        /* CPH BRAND GUIDELINES */
+        /* CPH BRAND IDENTITY SYSTEM */
         :root {
-            --cph-white: #FFFFFF; /* Primary Background */
-            --cph-teal: #3CBBC8; /* Primary Highlight */
-            --cph-blue: #444AD3; /* Secondary Accent */
-            --cph-dark-text: #2B2933; /* Headlines */
-            --cph-gray: #7D7D7D; /* Subhead/Body */
-            --cph-light-gray: #E9E9E9;
-            --font-main: 'Calibri', sans-serif; /* Standard CPH Font */
+            --cph-teal: #3CBBC8;      /* Primary Brand Color */
+            --cph-blue: #444AD3;      /* Secondary Accent */
+            --cph-dark: #2B2933;      /* Deep Charcoal for Text */
+            --cph-gray: #7D7D7D;      /* Metadata Text */
+            --cph-bg: #F8FAFB;        /* Soft Off-White Background */
+            --white: #FFFFFF;
+            --font-stack: 'Calibri', 'Segoe UI', sans-serif; /* Per CPH Guidelines */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: var(--font-main);
-            background-color: var(--cph-white);
-            color: var(--cph-dark-text);
-            line-height: 1.6;
+            font-family: var(--font-stack);
+            background-color: var(--cph-bg);
+            color: var(--cph-dark);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-
-        /* HEADER */
-        header {
+        /* NAVIGATION */
+        nav {
+            background: var(--white);
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--cph-teal);
-            margin-bottom: 50px;
+            border-bottom: 1px solid #EDEDED;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .logo { font-size: 28px; font-weight: 700; color: var(--cph-dark-text); }
-        .logo span { color: var(--cph-teal); }
-
-        /* HERO */
-        .hero { text-align: center; margin-bottom: 80px; }
-        
-        h1 { 
-            font-size: 48px; /* Large Header */
-            font-weight: 700; 
-            margin-bottom: 15px; 
-            color: var(--cph-dark-text);
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--cph-dark);
+            text-decoration: none;
         }
 
-        .subtitle { 
-            font-size: 26px; /* Subhead 1 */
-            color: var(--cph-teal); 
-            font-weight: 400;
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            background: var(--cph-teal);
+            border-radius: 6px;
+            display: grid;
+            place-items: center;
+            color: white;
+            font-weight: 900;
+        }
+
+        /* HERO SECTION - Using Brand Photography */
+        .hero {
+            height: 400px;
+            background: linear-gradient(rgba(43, 41, 51, 0.7), rgba(43, 41, 51, 0.7)), 
+                        url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1500&q=80'); /* Representative of CPH Photography */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            max-width: 800px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 22px;
+            opacity: 0.9;
         }
 
         /* JOB BOARD SECTION */
-        .section-label {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--cph-gray);
-            margin-bottom: 20px;
-            display: block;
+        .content-area {
+            max-width: 1100px;
+            margin: -60px auto 100px;
+            position: relative;
+            padding: 0 20px;
         }
 
-        .job-grid { display: grid; gap: 20px; }
+        .section-card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 50px;
+        }
+
+        .board-header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--cph-bg);
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
 
         .job-card {
-            background: #fff;
-            border: 1px solid var(--cph-light-gray);
-            padding: 30px;
-            border-radius: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: transform 0.2s, border-color 0.2s;
+            padding: 25px;
+            border: 1px solid #F0F0F0;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: all 0.2s ease;
             cursor: pointer;
+            text-decoration: none;
+            color: inherit;
         }
 
         .job-card:hover {
             border-color: var(--cph-teal);
-            transform: translateY(-2px);
+            transform: scale(1.01);
+            background: #FAFDFF;
         }
 
-        .job-info h3 { font-size: 24px; color: var(--cph-blue); margin-bottom: 5px; }
-        .job-meta { color: var(--cph-gray); font-size: 16px; /* Body 1 */ }
+        .job-card h3 {
+            font-size: 20px;
+            color: var(--cph-blue);
+            margin-bottom: 4px;
+        }
 
-        .btn-outline {
-            padding: 10px 20px;
-            border: 2px solid var(--cph-teal);
-            color: var(--cph-teal);
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 4px;
-            text-transform: uppercase;
+        .job-card .meta {
             font-size: 14px;
+            color: var(--cph-gray);
         }
 
-        /* DYNAMIC FORM (Mockup) */
-        #applicationForm {
-            display: none;
-            background: #fcfcfc;
-            padding: 40px;
-            border-radius: 8px;
-            border: 1px solid var(--cph-light-gray);
-            margin-top: 40px;
+        .btn-apply {
+            background: var(--cph-teal);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
         }
 
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 16px; }
+        /* FORM STYLING */
+        #appView { display: none; }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .full-width { grid-column: span 2; }
+
+        label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--cph-dark);
+            font-size: 15px;
+        }
+
         input, select, textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid var(--cph-light-gray);
-            border-radius: 4px;
+            padding: 14px;
+            border: 2px solid #EFEFEF;
+            border-radius: 6px;
             font-family: inherit;
+            background: #FDFDFD;
+            transition: border-color 0.2s;
         }
 
-        .btn-submit {
-            background-color: var(--cph-teal);
+        input:focus {
+            outline: none;
+            border-color: var(--cph-teal);
+        }
+
+        .submit-btn {
+            background: var(--cph-blue);
             color: white;
-            border: none;
-            padding: 15px 30px;
-            font-weight: 700;
-            font-size: 18px;
-            border-radius: 4px;
-            cursor: pointer;
             width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
         }
 
+        /* DYNAMIC FEEDBACK (Counterpart Assistant Style) */
+        .assistant-alert {
+            background: var(--cph-teal-light, #E0F7F9);
+            border-left: 4px solid var(--cph-teal);
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <div class="logo">Counterpart<span>Health</span></div>
-        <div style="font-weight: 700; color: var(--cph-blue);">Careers</div>
-    </header>
+<nav>
+    <a href="#" class="logo-container">
+        <div class="logo-mark">C</div>
+        Counterpart <span>Health</span>
+    </a>
+    <div style="font-weight: 700; color: var(--cph-blue); font-size: 14px;">FOR PROVIDERS</div>
+</nav>
 
-    <div id="boardView">
-        <div class="hero">
-            <h1>Building the next generation of clinical tech.</h1>
-            <p class="subtitle">Join the Counterpart Health team.</p>
-        </div>
+<div class="hero">
+    <div>
+        <h1>Physician enablement, <br>powered by AI.</h1>
+        <p>Small moments. Big outcomes.</p>
+    </div>
+</div>
 
-        <span class="section-label">Current Openings</span>
-        <div class="job-grid">
-            <div class="job-card" onclick="showForm('Senior Manager, Data Science')">
-                <div class="job-info">
-                    <h3>Senior Manager, Data Science</h3>
-                    <p class="job-meta">Remote - USA • Data Science</p>
-                </div>
-                <div class="btn-outline">Apply Now</div>
+<div class="content-area">
+    <div class="section-card">
+        
+        <div id="boardView">
+            <div class="board-header">
+                <h2>Current Openings</h2>
+                <span style="color: var(--cph-teal); font-weight: 700;">8 Open Roles</span>
             </div>
 
-            <div class="job-card" onclick="showForm('Clinical Operations Lead')">
-                <div class="job-info">
-                    <h3>Clinical Operations Lead</h3>
-                    <p class="job-meta">New York, NY • Clinical Operations</p>
+            <div class="job-container">
+                <div class="job-card" onclick="openApp('Senior Manager, Data Science')">
+                    <div>
+                        <h3>Senior Manager, Data Science</h3>
+                        <p class="meta">Engineering & Science • Remote, USA • Full-time</p>
+                    </div>
+                    <div class="btn-apply">View Application</div>
                 </div>
-                <div class="btn-outline">Apply Now</div>
+
+                <div class="job-card" onclick="openApp('Clinical Operations Lead')">
+                    <div>
+                        <h3>Clinical Operations Lead</h3>
+                        <p class="meta">Operations • New York, NY • Full-time</p>
+                    </div>
+                    <div class="btn-apply">View Application</div>
+                </div>
             </div>
         </div>
+
+        <div id="appView">
+            <a href="javascript:void(0)" onclick="closeApp()" style="color: var(--cph-blue); text-decoration: none; font-weight: 700; display: block; margin-bottom: 30px;">← BACK TO ALL JOBS</a>
+            <h2 id="jobTitleHeader" style="font-size: 32px; margin-bottom: 10px;">Apply for this Position</h2>
+            <p style="color: var(--cph-gray); margin-bottom: 40px;">Join thousands of practitioners using the world's leading AI-powered physician enablement platform.</p>
+
+            <div class="assistant-alert">
+                <strong>Counterpart Assistant:</strong> This role is part of our Clinical Transformation team. Please ensure your resume highlights VBC experience.
+            </div>
+
+            <form class="form-grid">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" placeholder="e.g. Jane">
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" placeholder="e.g. Doe">
+                </div>
+                <div class="form-group full-width">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="jane.doe@example.com">
+                </div>
+                <div class="form-group full-width">
+                    <label>Resume / CV</label>
+                    <input type="file" style="border: 2px dashed #E9E9E9; padding: 30px; text-align: center;">
+                </div>
+                <div class="form-group full-width">
+                    <label>LinkedIn Profile / Portfolio</label>
+                    <input type="url" placeholder="https://linkedin.com/in/username">
+                </div>
+                
+                <div class="full-width">
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                </div>
+            </form>
+        </div>
+
     </div>
 
-    <div id="applicationForm">
-        <a href="javascript:void(0)" onclick="hideForm()" style="color: var(--cph-blue); text-decoration: none; display: block; margin-bottom: 20px;">← Back to jobs</a>
-        <h2 id="jobTitleDisplay" style="margin-bottom: 30px;">Apply for this position</h2>
-        
-        <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" placeholder="First Last">
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="email@example.com">
-        </div>
-        <div class="form-group">
-            <label>Resume / CV</label>
-            <input type="file">
-        </div>
-        <div class="form-group">
-            <label>Why are you interested in Counterpart Health?</label>
-            <textarea rows="4"></textarea>
-        </div>
-        
-        <button class="btn-submit">Submit Application</button>
-    </div>
-
-    <p style="margin-top: 80px; font-size: 12px; color: var(--cph-gray); text-align: center;">
-        © 2026 Counterpart Health. All rights reserved.
-    </p>
+    <footer style="text-align: center; margin-top: 40px; color: var(--cph-gray); font-size: 13px;">
+        © 2026 Counterpart Health, Inc. | Value-based care, at the point of care.
+    </footer>
 </div>
 
 <script>
-    function showForm(title) {
+    function openApp(title) {
         document.getElementById('boardView').style.display = 'none';
-        document.getElementById('applicationForm').style.display = 'block';
-        document.getElementById('jobTitleDisplay').innerText = 'Apply for: ' + title;
-        window.scrollTo(0,0);
+        document.getElementById('appView').style.display = 'block';
+        document.getElementById('jobTitleHeader').innerText = title;
+        window.scrollTo(0, 0);
     }
 
-    function hideForm() {
+    function closeApp() {
         document.getElementById('boardView').style.display = 'block';
-        document.getElementById('applicationForm').style.display = 'none';
-        window.scrollTo(0,0);
+        document.getElementById('appView').style.display = 'none';
+        window.scrollTo(0, 0);
     }
 </script>
 
