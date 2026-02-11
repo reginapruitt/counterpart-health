@@ -1,319 +1,721 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join the Mission | Counterpart Health Careers</title>
-    <style>
-        /* CPH BRAND IDENTITY SYSTEM */
-        :root {
-            --cph-teal: #3CBBC8;      /* Primary Brand Color */
-            --cph-blue: #444AD3;      /* Secondary Accent */
-            --cph-dark: #2B2933;      /* Deep Charcoal for Text */
-            --cph-gray: #7D7D7D;      /* Metadata Text */
-            --cph-bg: #F8FAFB;        /* Soft Off-White Background */
-            --white: #FFFFFF;
-            --font-stack: 'Calibri', 'Segoe UI', sans-serif; /* Per CPH Guidelines */
-        }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Careers · Counterpart Health — Join the Dots</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700;900&display=swap" rel="stylesheet">
 
-        body {
-            font-family: var(--font-stack);
-            background-color: var(--cph-bg);
-            color: var(--cph-dark);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
+<style>
+  /* =========================
+     Brand Tokens & Globals
+     ========================= */
+  :root{
+    --cph-teal: #3CBBC8;
+    --cph-blue: #444AD3;
+    --cph-dark: #2B2933;
+    --cph-gray: #7D7D7D;
+    --bg: #FBFCFD;
+    --white: #FFFFFF;
+    --radius: 14px;
+    --glass: rgba(255,255,255,0.7);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:var(--bg);
+    color:var(--cph-dark);
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+  }
+  a{color:inherit}
+  button{font-family:inherit}
 
-        /* NAVIGATION */
-        nav {
-            background: var(--white);
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #EDEDED;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+  /* =========================
+     Dots Pattern (SVG) - used as background
+     ========================= */
+  .dots-pattern {
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(68,74,211,0.06) 0 2px, transparent 2px),
+      radial-gradient(circle at 40% 30%, rgba(60,187,200,0.06) 0 2px, transparent 2px),
+      radial-gradient(circle at 70% 70%, rgba(68,74,211,0.04) 0 2px, transparent 2px),
+      radial-gradient(circle at 90% 40%, rgba(60,187,200,0.03) 0 2px, transparent 2px);
+    background-size: 120px 120px, 160px 160px, 200px 200px, 260px 260px;
+    background-repeat: repeat;
+  }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--cph-dark);
-            text-decoration: none;
-        }
+  /* =========================
+     Header
+     ========================= */
+  header{
+    position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.9);backdrop-filter:blur(6px);
+    border-bottom:1px solid #ECEFF3;
+  }
+  .nav{
+    max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo-mark{
+    width:44px;height:44px;border-radius:10px;background:linear-gradient(180deg,var(--white),#f6f8ff);display:grid;place-items:center;
+    box-shadow:0 6px 18px rgba(60,60,80,0.06);
+  }
+  .brand h1{font-family:Playfair Display, serif;margin:0;font-size:18px;letter-spacing:0.2px;color:var(--cph-dark)}
+  .brand small{display:block;color:var(--cph-gray);font-weight:600;margin-top:2px;font-size:12px}
 
-        .logo-mark {
-            width: 32px;
-            height: 32px;
-            background: var(--cph-teal);
-            border-radius: 6px;
-            display: grid;
-            place-items: center;
-            color: white;
-            font-weight: 900;
-        }
+  .nav-actions{display:flex;align-items:center;gap:10px}
+  .nav-actions button{padding:8px 12px;border-radius:999px;border:none;cursor:pointer;font-weight:700}
+  .ghost{background:transparent;color:var(--cph-blue);border:2px solid rgba(68,74,211,0.08)}
+  .cta{background:linear-gradient(90deg,var(--cph-blue),#6158ff);color:white;padding:9px 14px;border-radius:10px;font-weight:800;box-shadow:0 8px 20px rgba(68,74,211,0.08)}
 
-        /* HERO SECTION - Using Brand Photography */
-        .hero {
-            height: 400px;
-            background: linear-gradient(rgba(43, 41, 51, 0.7), rgba(43, 41, 51, 0.7)), 
-                        url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1500&q=80'); /* Representative of CPH Photography */
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 20px;
-        }
+  /* =========================
+     HERO
+     ========================= */
+  .hero-wrap{max-width:1400px;margin:26px auto 34px;padding:0 20px;position:relative}
+  .hero{
+    display:grid;grid-template-columns:1fr 420px;gap:26px;align-items:stretch;
+  }
+  .hero-left{
+    background:linear-gradient(180deg, rgba(68,74,211,0.04), rgba(60,187,200,0.02));
+    border-radius:var(--radius);padding:34px;position:relative;overflow:hidden;box-shadow:0 18px 40px rgba(43,41,51,0.06);
+  }
+  .hero-left h2{font-family:Playfair Display,serif;margin:0;font-size:44px;line-height:1.03;color:var(--cph-dark)}
+  .hero-left p{color:var(--cph-gray);margin-top:12px;font-size:16px}
+  .hero-cta{margin-top:20px;display:flex;gap:12px;align-items:center}
+  .hero-cta button{font-weight:800;border-radius:12px;padding:12px 18px;border:none;cursor:pointer}
+  .hero-cta .primary{background:linear-gradient(90deg,var(--cph-teal),var(--cph-blue));color:white;box-shadow:0 20px 36px rgba(68,74,211,0.06)}
+  .hero-cta .outline{background:transparent;border:2px solid rgba(43,41,51,0.06);color:var(--cph-dark)}
 
-        .hero h1 {
-            font-size: 52px;
-            font-weight: 700;
-            max-width: 800px;
-            margin-bottom: 15px;
-        }
+  /* hero dots overlay */
+  .hero-left .dot-cluster{
+    position:absolute;right:-40px;top:-40px;opacity:0.8;transform:rotate(20deg)
+  }
 
-        .hero p {
-            font-size: 22px;
-            opacity: 0.9;
-        }
+  /* right hero card: large image with dots and text overlay */
+  .hero-right{
+    border-radius:var(--radius);overflow:hidden;position:relative;box-shadow:0 18px 40px rgba(43,41,51,0.06);
+    min-height:300px;background:#f5f7fb;
+  }
+  .hero-photo{
+    width:100%;height:100%;object-fit:cover;display:block;filter:contrast(0.95) saturate(1.04);
+  }
+  .hero-overlay{
+    position:absolute;left:14px;bottom:14px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));padding:14px;border-radius:12px;width:calc(100% - 40px);
+  }
+  .hero-overlay h4{margin:0;color:var(--cph-blue);font-weight:800}
+  .hero-overlay p{margin:6px 0 0;color:var(--cph-gray);font-size:14px}
 
-        /* JOB BOARD SECTION */
-        .content-area {
-            max-width: 1100px;
-            margin: -60px auto 100px;
-            position: relative;
-            padding: 0 20px;
-        }
+  /* animated floats */
+  .float-dot{
+    width:14px;height:14px;border-radius:50%;position:absolute;background:radial-gradient(circle at 40% 40%,var(--cph-teal),var(--cph-blue));opacity:0.95;
+    box-shadow:0 6px 20px rgba(60,60,80,0.08);
+    animation: floaty 6s ease-in-out infinite;
+  }
+  .float-dot.x1{top:10%;left:6%;animation-delay:0s}
+  .float-dot.x2{top:45%;left:-2%;animation-delay:1.2s}
+  .float-dot.x3{top:80%;left:18%;animation-delay:2.1s}
+  @keyframes floaty{
+    0%{transform:translateY(0) scale(1)}
+    50%{transform:translateY(-10px) scale(1.06)}
+    100%{transform:translateY(0) scale(1)}
+  }
 
-        .section-card {
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            padding: 50px;
-        }
+  /* =========================
+     FILTER + SEARCH ROW
+     ========================= */
+  .filters{
+    max-width:1400px;margin:20px auto;padding:0 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  }
+  .search{
+    flex:1;display:flex;align-items:center;gap:10px;background:white;padding:12px;border-radius:12px;box-shadow:0 8px 30px rgba(60,60,80,0.04);
+    border:1px solid #F0F2F5;
+  }
+  .search input{border:none;outline:none;width:100%;font-size:15px}
+  .filters .controls{display:flex;gap:10px}
+  .tagchip{background:white;padding:8px 10px;border-radius:999px;border:1px solid #F1F3F6;font-weight:700;color:var(--cph-blue);cursor:pointer}
+  .tagchip.active{background:linear-gradient(90deg,var(--cph-blue),var(--cph-teal));color:white;box-shadow:0 8px 18px rgba(68,74,211,0.06)}
 
-        .board-header {
-            margin-bottom: 40px;
-            border-bottom: 2px solid var(--cph-bg);
-            padding-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
+  /* =========================
+     JOB GRID
+     ========================= */
+  .board{
+    max-width:1400px;margin:20px auto;padding:0 20px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+  .job-card{
+    position:relative;overflow:hidden;border-radius:16px;height:280px;cursor:pointer;
+    box-shadow:0 12px 36px rgba(43,41,51,0.06);transition:transform .26s ease, box-shadow .26s ease;
+    border:1px solid rgba(11,15,25,0.02);
+    background:#fff;
+  }
+  .job-card:hover{transform:translateY(-8px);box-shadow:0 28px 70px rgba(43,41,51,0.1)}
+  .job-media{position:absolute;inset:0;overflow:hidden}
+  .job-media img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.06);transition:transform .6s ease}
+  .job-card:hover .job-media img{transform:scale(1.12)}
+  .job-gradient{
+    position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,41,51,0.03),rgba(255,255,255,0.12));
+  }
+  .job-content{
+    position:absolute;left:18px;right:18px;bottom:18px;padding:18px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.6));
+    backdrop-filter:blur(6px);
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+  }
+  .job-left{max-width:70%}
+  .job-left h3{margin:0;font-family:Playfair Display,serif;font-size:18px;color:var(--cph-dark)}
+  .job-left p{margin:8px 0 0;color:var(--cph-gray);font-size:13px}
+  .job-right{text-align:right}
+  .salary-badge{background:white;padding:8px 10px;border-radius:10px;font-weight:800;color:var(--cph-blue);border:1px solid rgba(68,74,211,0.06)}
+  .apply-mini{margin-top:8px;background:linear-gradient(90deg,var(--cph-teal),var(--cph-blue));padding:8px 12px;border-radius:10px;color:white;font-weight:800;cursor:pointer;border:none}
 
-        .job-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 25px;
-            border: 1px solid #F0F0F0;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-        }
+  /* dots accent on cards */
+  .card-dots{position:absolute;top:14px;left:14px;opacity:0.9}
+  .card-dots svg{width:56px;height:56px}
 
-        .job-card:hover {
-            border-color: var(--cph-teal);
-            transform: scale(1.01);
-            background: #FAFDFF;
-        }
+  /* =========================
+     MODAL (full-screen job detail)
+     ========================= */
+  .modal {
+    position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(18,20,28,0.45);
+    z-index:80;opacity:0;pointer-events:none;transition:opacity .28s ease;
+  }
+  .modal.open{opacity:1;pointer-events:auto}
+  .modal-card{
+    width:92%;max-width:1100px;background:white;border-radius:18px;overflow:hidden;display:grid;grid-template-columns:480px 1fr;
+    max-height:88vh;
+  }
+  .modal-left{position:relative;background:#fafcff}
+  .modal-left img{width:100%;height:100%;object-fit:cover;display:block}
+  .modal-left .left-overlay{
+    position:absolute;left:22px;bottom:22px;background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.8));padding:12px;border-radius:12px;
+  }
+  .modal-right{padding:28px;overflow:auto}
+  .modal-right h2{margin:0;font-family:Playfair Display,serif;font-size:26px}
+  .meta-row{margin-top:10px;color:var(--cph-gray);font-size:14px}
+  .responsibilities{margin-top:18px}
+  .responsibilities li{margin:8px 0;color:var(--cph-gray)}
+  .perks{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .perk{background:linear-gradient(90deg,rgba(68,74,211,0.06),rgba(60,187,200,0.03));padding:8px 12px;border-radius:10px;font-weight:700;color:var(--cph-blue)}
 
-        .job-card h3 {
-            font-size: 20px;
-            color: var(--cph-blue);
-            margin-bottom: 4px;
-        }
+  .modal-actions{margin-top:20px;display:flex;gap:12px;align-items:center}
+  .close-btn{background:transparent;border:none;font-weight:800;color:var(--cph-gray);cursor:pointer}
 
-        .job-card .meta {
-            font-size: 14px;
-            color: var(--cph-gray);
-        }
+  /* =========================
+     Assistant bubble
+     ========================= */
+  .assistant-bubble{
+    position:fixed;right:20px;bottom:28px;z-index:90;display:flex;align-items:center;gap:12px;
+  }
+  .assistant-button{
+    width:64px;height:64px;border-radius:50%;background:linear-gradient(90deg,var(--cph-blue),var(--cph-teal));display:grid;place-items:center;color:white;box-shadow:0 18px 40px rgba(60,60,80,0.15);cursor:pointer;border:none;
+  }
+  .assistant-panel{
+    width:320px;background:white;border-radius:12px;padding:14px;box-shadow:0 18px 40px rgba(43,41,51,0.12);display:none;
+  }
+  .assistant-panel.open{display:block}
+  .assistant-panel h4{margin:0;font-size:14px;color:var(--cph-blue)}
+  .assistant-panel p{margin:8px 0 0;color:var(--cph-gray);font-size:13px}
 
-        .btn-apply {
-            background: var(--cph-teal);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-        }
+  /* =========================
+     Responsive
+     ========================= */
+  @media (max-width:1100px){ .hero{grid-template-columns:1fr} .board{grid-template-columns:repeat(2,1fr)} .modal-card{grid-template-columns:1fr} }
+  @media (max-width:700px){
+    .brand h1{font-size:16px}
+    .board{grid-template-columns:1fr}
+    .hero-left h2{font-size:32px}
+    .hero-right{min-height:180px}
+  }
 
-        /* FORM STYLING */
-        #appView { display: none; }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-
-        .full-width { grid-column: span 2; }
-
-        label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--cph-dark);
-            font-size: 15px;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 14px;
-            border: 2px solid #EFEFEF;
-            border-radius: 6px;
-            font-family: inherit;
-            background: #FDFDFD;
-            transition: border-color 0.2s;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--cph-teal);
-        }
-
-        .submit-btn {
-            background: var(--cph-blue);
-            color: white;
-            width: 100%;
-            padding: 18px;
-            border: none;
-            border-radius: 6px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        /* DYNAMIC FEEDBACK (Counterpart Assistant Style) */
-        .assistant-alert {
-            background: var(--cph-teal-light, #E0F7F9);
-            border-left: 4px solid var(--cph-teal);
-            padding: 15px;
-            margin-bottom: 25px;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-    </style>
+  /* small utilities */
+  .muted{color:var(--cph-gray)}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+</style>
 </head>
-<body>
+<body class="dots-pattern">
 
-<nav>
-    <a href="#" class="logo-container">
-        <div class="logo-mark">C</div>
-        Counterpart <span>Health</span>
-    </a>
-    <div style="font-weight: 700; color: var(--cph-blue); font-size: 14px;">FOR PROVIDERS</div>
-</nav>
-
-<div class="hero">
-    <div>
-        <h1>Physician enablement, <br>powered by AI.</h1>
-        <p>Small moments. Big outcomes.</p>
-    </div>
-</div>
-
-<div class="content-area">
-    <div class="section-card">
-        
-        <div id="boardView">
-            <div class="board-header">
-                <h2>Current Openings</h2>
-                <span style="color: var(--cph-teal); font-weight: 700;">8 Open Roles</span>
-            </div>
-
-            <div class="job-container">
-                <div class="job-card" onclick="openApp('Senior Manager, Data Science')">
-                    <div>
-                        <h3>Senior Manager, Data Science</h3>
-                        <p class="meta">Engineering & Science • Remote, USA • Full-time</p>
-                    </div>
-                    <div class="btn-apply">View Application</div>
-                </div>
-
-                <div class="job-card" onclick="openApp('Clinical Operations Lead')">
-                    <div>
-                        <h3>Clinical Operations Lead</h3>
-                        <p class="meta">Operations • New York, NY • Full-time</p>
-                    </div>
-                    <div class="btn-apply">View Application</div>
-                </div>
-            </div>
-        </div>
-
-        <div id="appView">
-            <a href="javascript:void(0)" onclick="closeApp()" style="color: var(--cph-blue); text-decoration: none; font-weight: 700; display: block; margin-bottom: 30px;">← BACK TO ALL JOBS</a>
-            <h2 id="jobTitleHeader" style="font-size: 32px; margin-bottom: 10px;">Apply for this Position</h2>
-            <p style="color: var(--cph-gray); margin-bottom: 40px;">Join thousands of practitioners using the world's leading AI-powered physician enablement platform.</p>
-
-            <div class="assistant-alert">
-                <strong>Counterpart Assistant:</strong> This role is part of our Clinical Transformation team. Please ensure your resume highlights VBC experience.
-            </div>
-
-            <form class="form-grid">
-                <div class="form-group">
-                    <label>First Name</label>
-                    <input type="text" placeholder="e.g. Jane">
-                </div>
-                <div class="form-group">
-                    <label>Last Name</label>
-                    <input type="text" placeholder="e.g. Doe">
-                </div>
-                <div class="form-group full-width">
-                    <label>Email Address</label>
-                    <input type="email" placeholder="jane.doe@example.com">
-                </div>
-                <div class="form-group full-width">
-                    <label>Resume / CV</label>
-                    <input type="file" style="border: 2px dashed #E9E9E9; padding: 30px; text-align: center;">
-                </div>
-                <div class="form-group full-width">
-                    <label>LinkedIn Profile / Portfolio</label>
-                    <input type="url" placeholder="https://linkedin.com/in/username">
-                </div>
-                
-                <div class="full-width">
-                    <button type="submit" class="submit-btn">Submit Application</button>
-                </div>
-            </form>
-        </div>
-
+<header>
+  <div class="nav">
+    <div class="brand" aria-label="Counterpart Health">
+      <div class="logo-mark" role="img" aria-label="Counterpart Health logo">
+        <!-- stylized two-color crescent + dot -->
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="36" height="36" rx="8" fill="#fff"/>
+          <g transform="translate(4,4)">
+            <path d="M14 0C9.58 0 6 3.58 6 8s3.58 8 8 8 8-3.58 8-8S18.42 0 14 0z" fill="#444AD3"/>
+            <circle cx="20" cy="8" r="3.6" fill="#3CBBC8"/>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <h1>Counterpart Health</h1>
+        <small>Value-based care, at the point of care</small>
+      </div>
     </div>
 
-    <footer style="text-align: center; margin-top: 40px; color: var(--cph-gray); font-size: 13px;">
-        © 2026 Counterpart Health, Inc. | Value-based care, at the point of care.
-    </footer>
+    <div class="nav-actions" role="navigation" aria-label="Main navigation">
+      <button class="ghost" onclick="scrollToBoard()">Open roles</button>
+      <button class="ghost" onclick="alert('Culture →')">Our Story</button>
+      <button class="cta" onclick="scrollToBoard()">Join the team</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-wrap" aria-labelledby="heroTitle">
+  <div class="hero">
+    <div class="hero-left" role="region" aria-label="Careers hero">
+      <div class="dot-cluster" aria-hidden="true">
+        <!-- decorative dot cluster -->
+        <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="4" fill="#444AD3" opacity="0.12" />
+          <circle cx="36" cy="28" r="6" fill="#3CBBC8" opacity="0.12" />
+          <circle cx="72" cy="22" r="5" fill="#444AD3" opacity="0.14" />
+          <circle cx="98" cy="44" r="7" fill="#3CBBC8" opacity="0.10" />
+        </svg>
+      </div>
+
+      <h2 id="heroTitle">Design the future of clinical care — <br>join a team that connects dots where it matters.</h2>
+      <p>We partner with clinicians to simplify care using data, AI, and collaborative workflows. Our mission is clinical impact — translated into delightful, useful products.</p>
+
+      <div class="hero-cta">
+        <button class="primary" onclick="scrollToBoard()" aria-label="See open roles">See open roles</button>
+        <button class="outline" onclick="alert('A quick note about working at Counterpart')">Why we care</button>
+      </div>
+
+      <!-- playful floating dots -->
+      <div class="float-dot x1" aria-hidden="true"></div>
+      <div class="float-dot x2" aria-hidden="true"></div>
+      <div class="float-dot x3" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero-right" role="img" aria-label="Clinician working with partner">
+      <img class="hero-photo" src="https://images.unsplash.com/photo-1580281657527-3f7a9e2c6f9f?auto=format&fit=crop&w=1400&q=75" alt="Clinician and team collaborating">
+      <div class="hero-overlay">
+        <h4>People-first clinical design</h4>
+        <p class="muted">Our work sits at the intersection of human-centered design and clinical outcomes — built for teams, validated in clinics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<section class="filters" aria-label="Search and filters">
+  <div class="search" role="search" aria-label="Search job listings">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="opacity:.6"><path d="M21 21l-4.35-4.35M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14z" stroke="#8b95b3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <input id="search" placeholder="Search roles, skills, or teams" />
+  </div>
+
+  <div class="controls" role="group" aria-label="Filter chips">
+    <button class="tagchip" data-filter="vbc">VBC</button>
+    <button class="tagchip" data-filter="clinical">Clinical</button>
+    <button class="tagchip" data-filter="remote">Remote</button>
+    <button class="tagchip" data-filter="design">Design</button>
+  </div>
+</section>
+
+<!-- JOB GRID -->
+<main id="board" class="board" aria-live="polite" tabindex="-1" aria-label="Open roles">
+  <!-- cards will be injected -->
+</main>
+
+<!-- Modal for job details -->
+<div id="modal" class="modal" role="dialog" aria-hidden="true" aria-labelledby="modalTitle" tabindex="-1">
+  <div class="modal-card" role="document">
+    <div class="modal-left">
+      <img id="modalImage" src="" alt="">
+      <div class="left-overlay">
+        <div id="modalTeam" class="muted"></div>
+      </div>
+    </div>
+    <div class="modal-right">
+      <button class="close-btn" aria-label="Close job" onclick="closeModal()">✕ Close</button>
+      <h2 id="modalTitle">Role Title</h2>
+      <div id="modalMeta" class="meta-row muted"></div>
+
+      <div class="responsibilities">
+        <h4 style="color:var(--cph-blue)">What you’ll do</h4>
+        <ul id="modalBullets"></ul>
+      </div>
+
+      <div class="responsibilities">
+        <h4 style="color:var(--cph-blue)">What we look for</h4>
+        <ul id="modalNeeds"></ul>
+      </div>
+
+      <div style="margin-top:14px">
+        <h4 style="color:var(--cph-blue)">Perks</h4>
+        <div id="modalPerks" class="perks"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="apply-mini" onclick="openApply()">Start application</button>
+        <button class="save-btn" onclick="toggleSave()" style="background:transparent;border:1px solid rgba(43,41,51,0.06);padding:10px 12px;border-radius:10px">☆ Save</button>
+      </div>
+
+      <!-- small assistant tip -->
+      <div style="margin-top:18px" class="assistant-panel" id="modalAssistant">
+        <h4>Counterpart Assistant</h4>
+        <p id="assistantTip">Tip text here. Emphasize measurable clinical results and VBC outcomes.</p>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Application full-screen overlay -->
+<div id="applyOverlay" style="position:fixed;inset:0;display:none;z-index:95;background:linear-gradient(180deg,rgba(255,255,255,0.96),rgba(245,248,255,0.96));padding:24px;overflow:auto">
+  <div style="max-width:820px;margin:32px auto;background:white;border-radius:16px;padding:22px;box-shadow:0 30px 80px rgba(43,41,51,0.12)">
+    <button class="close-btn" onclick="closeApply()">✕ Close</button>
+    <h2 id="applyTitle">Apply</h2>
+    <p class="muted" id="applyFor">Applying for...</p>
+
+    <div style="margin-top:16px">
+      <div style="background:#F6F9FF;padding:12px;border-radius:10px;display:flex;justify-content:space-between;align-items:center">
+        <div><strong>Counterpart Assistant</strong><div class="muted" style="font-size:13px;margin-top:6px" id="applyAssistantTip">We recommend you open with VBC experience and a few measurable wins.</div></div>
+        <div><button class="ghost" onclick="alert('Need more help?')">Ask</button></div>
+      </div>
+    </div>
+
+    <form id="applyForm" style="margin-top:18px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div>
+          <label for="fn" style="font-weight:700">First name</label>
+          <input id="fn" required style="padding:10px;border-radius:8px;border:1px solid #EEE;width:100%">
+        </div>
+        <div>
+          <label for="ln" style="font-weight:700">Last name</label>
+          <input id="ln" required style="padding:10px;border-radius:8px;border:1px solid #EEE;width:100%">
+        </div>
+
+        <div style="grid-column:1 / -1">
+          <label for="email" style="font-weight:700">Email</label>
+          <input id="email" type="email" required style="padding:10px;border-radius:8px;border:1px solid #EEE;width:100%">
+        </div>
+
+        <div style="grid-column:1 / -1">
+          <label style="font-weight:700">Resume</label>
+          <div id="drop" style="border:2px dashed rgba(60,187,200,0.18);padding:16px;border-radius:10px;text-align:center;cursor:pointer">Drag & drop or click to upload</div>
+          <input id="resumeInput" type="file" accept=".pdf,.doc,.docx" style="display:none">
+          <div id="resumePreview" style="margin-top:10px"></div>
+        </div>
+
+        <div style="grid-column:1 / -1">
+          <label style="font-weight:700">Short pitch (one or two sentences)</label>
+          <textarea id="pitch" style="width:100%;padding:10px;border-radius:8px;border:1px solid #EEE" rows="4"></textarea>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;display:flex;justify-content:flex-end;gap:10px">
+        <button type="button" class="ghost" onclick="closeApply()">Cancel</button>
+        <button type="button" class="cta" onclick="submitApp()">Submit application</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Assistant bubble -->
+<div class="assistant-bubble" aria-hidden="false">
+  <button class="assistant-button" id="assistantBtn" aria-label="Open Counterpart Assistant" title="Counterpart Assistant">CP</button>
+  <div class="assistant-panel" id="assistantPanel" role="region" aria-label="Counterpart assistant">
+    <h4>Counterpart Assistant</h4>
+    <p class="muted">Not sure how to frame your experience? Focus on a result you influenced (e.g., reduced referral turnaround by X days) and a clear action you owned.</p>
+  </div>
+</div>
+
+<footer style="max-width:1200px;margin:32px auto;padding:0 20px;color:var(--cph-gray);font-size:13px;text-align:center">
+  © <span id="yr"></span> Counterpart Health, Inc. — Value-based care, at the point of care.
+</footer>
 
 <script>
-    function openApp(title) {
-        document.getElementById('boardView').style.display = 'none';
-        document.getElementById('appView').style.display = 'block';
-        document.getElementById('jobTitleHeader').innerText = title;
-        window.scrollTo(0, 0);
-    }
+  document.getElementById('yr').textContent = new Date().getFullYear();
 
-    function closeApp() {
-        document.getElementById('boardView').style.display = 'block';
-        document.getElementById('appView').style.display = 'none';
-        window.scrollTo(0, 0);
+  /* ---------------------------
+     Sample data (with photos + tags)
+  --------------------------- */
+  const JOBS = [
+    {
+      id:'j1',
+      title:'Senior Manager, Data Science',
+      team:'Engineering & Science',
+      location:'Remote, USA',
+      type:'Full-time',
+      tags:['vbc','data','remote'],
+      salary:'$160k–$190k',
+      summary:'Lead ML efforts that translate clinical workflows into measurable outcomes.',
+      bullets:[
+        'Lead cross-functional experiments with clinicians and engineers.',
+        'Ship models that affect clinician decisions and measure the impact.',
+        'Communicate results to stakeholders in clear, clinical terms.'
+      ],
+      needs:['7+ years applied ML','Claims & EHR experience','Python & deployment'],
+      perks:['Equity','Comprehensive benefits','Remote-first'],
+      img:'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=1400&q=70'
+    },
+    {
+      id:'j2',
+      title:'Clinical Operations Lead',
+      team:'Operations',
+      location:'New York, NY',
+      type:'Full-time',
+      tags:['clinical','vbc','on-site'],
+      salary:'$120k–$140k',
+      summary:'Scale clinical programs and partner with clinicians for implementation success.',
+      bullets:['Operationalize pilots','Measure outcomes & quality','Manage vendor integrations'],
+      needs:['Clinical operations background','VBP experience','Strong communication'],
+      perks:['Healthcare','401(k)','Commuter'],
+      img:'https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1400&q=70'
+    },
+    {
+      id:'j3',
+      title:'Product Designer, Clinical Experience',
+      team:'Product & Design',
+      location:'San Francisco, CA',
+      type:'Full-time',
+      tags:['design','clinical'],
+      salary:'$125k–$155k',
+      summary:'Design clinician workflows that make care easier and more accurate.',
+      bullets:['Lead clinics research','Prototype with clinicians','Work closely with engineers'],
+      needs:['Healthcare portfolios','Research-first','Cross-functional collaboration'],
+      perks:['Design stipend','Remote-friendly','Growth'],
+      img:'https://images.unsplash.com/photo-1529257414770-1964c72ccf16?auto=format&fit=crop&w=1400&q=70'
+    },
+    {
+      id:'j4',
+      title:'Senior Software Engineer, Backend',
+      team:'Engineering & Science',
+      location:'Remote, USA',
+      type:'Full-time',
+      tags:['remote','backend','platform'],
+      salary:'$150k–$185k',
+      summary:'Build reliable services and pipelines that power clinician-facing features.',
+      bullets:['Design APIs','Own ingestion & validation','Mentor engineers'],
+      needs:['5+ years distributed systems','Event-driven architecture'],
+      perks:['Equity','Medical coverage','Flexible schedule'],
+      img:'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1400&q=70'
+    },
+    {
+      id:'j5',
+      title:'Director, Clinical Transformation',
+      team:'Clinical Transformation',
+      location:'Remote, USA',
+      type:'Full-time',
+      tags:['clinical','leadership','vbc'],
+      salary:'$180k–$220k',
+      summary:'Lead large-scale clinical transformation initiatives with partner health systems.',
+      bullets:['Define strategy','Lead performance measurement','Support deployment & training'],
+      needs:['Program leadership','VBP experience','Clinical credibility'],
+      perks:['Leadership equity','Executive coaching'],
+      img:'https://images.unsplash.com/photo-1551601651-6a8a0b5f5a40?auto=format&fit=crop&w=1400&q=70'
     }
+  ];
+
+  /* ---------------------------
+     Render job cards (creative layout)
+  --------------------------- */
+  const board = document.getElementById('board');
+  function renderJobs(list){
+    board.innerHTML = '';
+    list.forEach((job, idx) => {
+      const el = document.createElement('div');
+      el.className = 'job-card';
+      el.setAttribute('role','button');
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('aria-label', job.title + ' at ' + job.team);
+      el.innerHTML = `
+        <div class="job-media" aria-hidden="true"><img src="${job.img}" alt=""></div>
+        <div class="job-gradient"></div>
+        <div class="card-dots" aria-hidden="true">
+          <svg viewBox="0 0 56 56"><circle cx="8" cy="8" r="3.2" fill="#3CBBC8" opacity="0.9"/><circle cx="28" cy="16" r="4.6" fill="#444AD3" opacity="0.14"/><circle cx="44" cy="8" r="2.8" fill="#3CBBC8" opacity="0.12"/></svg>
+        </div>
+        <div class="job-content">
+          <div class="job-left">
+            <h3>${job.title}</h3>
+            <p class="muted">${job.team} • ${job.location}</p>
+          </div>
+          <div class="job-right">
+            <div class="salary-badge">${job.salary}</div>
+            <button class="apply-mini" style="margin-top:8px" onclick="openModal(event,'${job.id}')">View role</button>
+          </div>
+        </div>
+      `;
+      // click handlers (card and keyboard)
+      el.addEventListener('click', () => openModal(null, job.id));
+      el.addEventListener('keydown', (e) => { if(e.key === 'Enter') openModal(null, job.id) });
+      board.appendChild(el);
+    });
+  }
+
+  renderJobs(JOBS);
+
+  /* ---------------------------
+     Filtering (simple chip & search)
+  --------------------------- */
+  const tagChips = Array.from(document.querySelectorAll('.tagchip'));
+  const searchInput = document.getElementById('search');
+
+  tagChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.classList.toggle('active');
+      applyFilter();
+    });
+  });
+  searchInput.addEventListener('input', debounce(applyFilter, 220));
+
+  function applyFilter(){
+    const active = tagChips.filter(c => c.classList.contains('active')).map(c => c.dataset.filter);
+    const q = searchInput.value.trim().toLowerCase();
+    let filtered = JOBS.filter(job => {
+      if(active.length){
+        if(!active.every(a => job.tags.includes(a))) return false;
+      }
+      if(q){
+        const hay = [job.title, job.summary, job.team, job.tags.join(' ')].join(' ').toLowerCase();
+        return hay.includes(q);
+      }
+      return true;
+    });
+    renderJobs(filtered);
+    // subtle focus to board
+    board.focus();
+  }
+
+  /* ---------------------------
+     Modal details & apply flows
+  --------------------------- */
+  const modal = document.getElementById('modal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalMeta = document.getElementById('modalMeta');
+  const modalBullets = document.getElementById('modalBullets');
+  const modalNeeds = document.getElementById('modalNeeds');
+  const modalPerks = document.getElementById('modalPerks');
+  const modalImage = document.getElementById('modalImage');
+  const modalTeam = document.getElementById('modalTeam');
+  const assistantTip = document.getElementById('assistantTip');
+
+  function openModal(e, id){
+    if(e) e.stopPropagation();
+    const job = JOBS.find(j=>j.id===id);
+    if(!job) return;
+    modalTitle.textContent = job.title;
+    modalMeta.textContent = `${job.team} • ${job.location} • ${job.type} • ${job.salary}`;
+    modalBullets.innerHTML = job.bullets.map(b => `<li>${b}</li>`).join('');
+    modalNeeds.innerHTML = job.needs.map(n=>`<li>${n}</li>`).join('');
+    modalPerks.innerHTML = job.perks.map(p=>`<div class="perk">${p}</div>`).join('');
+    modalImage.src = job.img;
+    modalImage.alt = job.title + ' photo';
+    modalTeam.textContent = job.team;
+    assistantTip.textContent = `Counterpart Assistant: For ${job.title}, highlight any VBC work, measurable impact, and collaboration with clinical teams.`;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    // lock scrolling
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  // close modal on overlay click
+  modal.addEventListener('click', (e) => { if(e.target === modal) closeModal() });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal() });
+
+  /* ---------------------------
+     Save demo (localStorage)
+  --------------------------- */
+  function toggleSave(){
+    alert('Saved to demo list (local demo).');
+  }
+
+  /* ---------------------------
+     Apply overlay
+  --------------------------- */
+  const applyOverlay = document.getElementById('applyOverlay');
+  const applyTitle = document.getElementById('applyTitle');
+  const applyFor = document.getElementById('applyFor');
+  const applyAssistantTip = document.getElementById('applyAssistantTip');
+  const resumeInput = document.getElementById('resumeInput');
+  const drop = document.getElementById('drop');
+  const resumePreview = document.getElementById('resumePreview');
+  let currentApplyFor = null;
+
+  function openApply(){
+    const title = modalTitle.textContent;
+    openApplyFor(title);
+  }
+  function openApplyFor(title){
+    currentApplyFor = title;
+    applyTitle.textContent = 'Apply for ' + title;
+    applyFor.textContent = 'You’re applying for: ' + title;
+    applyAssistantTip.textContent = `Counterpart Assistant: Start with a 1-2 sentence summary of your VBC or clinical impact relevant to ${title}.`;
+    applyOverlay.style.display = 'block';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function closeApply(){
+    applyOverlay.style.display = 'none';
+  }
+
+  // drag & drop resume
+  drop.addEventListener('click', ()=> resumeInput.click());
+  drop.addEventListener('dragover', e => { e.preventDefault(); drop.style.borderColor = 'rgba(68,74,211,0.14)'; });
+  drop.addEventListener('dragleave', e => { drop.style.borderColor = 'rgba(60,187,200,0.18)'; });
+  drop.addEventListener('drop', e => {
+    e.preventDefault();
+    const f = e.dataTransfer.files[0];
+    handleResume(f);
+  });
+  resumeInput.addEventListener('change', (e) => {
+    const f = e.target.files[0];
+    handleResume(f);
+  });
+  function handleResume(f){
+    if(!f) return;
+    resumePreview.innerHTML = `<div style="display:flex;align-items:center;gap:10px">
+      <div style="width:44px;height:44px;border-radius:8px;background:#f1f6ff;display:grid;place-items:center">${f.name.split('.').pop().toUpperCase()}</div>
+      <div><strong>${f.name}</strong><div class="muted" style="font-size:13px">${Math.round(f.size/1024)} KB</div></div>
+    </div>`;
+  }
+
+  function submitApp(){
+    // in production: send to ATS. For demo: show success and close.
+    const fn = document.getElementById('fn').value || 'Applicant';
+    alert(`${fn}, thanks — your application for "${currentApplyFor || modalTitle.textContent}" has been received (demo).`);
+    closeApply();
+    closeModal();
+  }
+
+  /* ---------------------------
+     Assistant bubble behavior
+  --------------------------- */
+  const assistantBtn = document.getElementById('assistantBtn');
+  const assistantPanel = document.getElementById('assistantPanel');
+  assistantBtn.addEventListener('click', () => assistantPanel.classList.toggle('open'));
+
+  /* ---------------------------
+     Utilities
+  --------------------------- */
+  function debounce(fn, t=200){
+    let id;
+    return (...args) => { clearTimeout(id); id = setTimeout(()=> fn(...args), t); }
+  }
+
+  function scrollToBoard(){ document.getElementById('board').scrollIntoView({behavior:'smooth'}); }
+
+  /* ---------------------------
+     Initial playful entrance
+  --------------------------- */
+  window.addEventListener('load', () => {
+    // tiny entrance animation for cards
+    const cards = document.querySelectorAll('.job-card');
+    cards.forEach((c,i) => {
+      c.style.opacity = 0;
+      c.style.transform = 'translateY(18px)';
+      setTimeout(()=>{ c.style.transition = 'all .6s cubic-bezier(.2,.9,.2,1)'; c.style.opacity = 1; c.style.transform = 'translateY(0)'; }, 120 * i);
+    });
+  });
+
 </script>
-
 </body>
 </html>
